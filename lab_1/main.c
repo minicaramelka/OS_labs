@@ -24,11 +24,13 @@ int main(){
 	default:
 		printf("PARENT: Это процесс-родитель!\n");
 		printf("PARENT: Мой PID -- %d\n", getpid());
-		printf("PARENT: PID моего родителя %d\n",pid);
+		printf("PARENT: PID моего родителя %d\n",getppid());
 		printf("PARENT: Я жду, пока потомк не вызовет exit()...\n"); wait(&exit_stat);
 		printf("PARENT: Код возврата потомка:%d\n", WEXITSTATUS(exit_stat));
 		printf("PARENT: Выход!\n");
 	}
 	return 0;
 }
+
+
 
