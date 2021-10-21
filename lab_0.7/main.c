@@ -100,7 +100,7 @@ void extract(char* archive, char* outputFile){
                         counter = counter + 1;
         }
         if(counter > 0){
-		if((file = fopen(outputFile, "r")) != NULL){
+		if((file = fopen(outputFile, "w")) != NULL){
 			struct info{
         			char fileName[1024];
                 		int fileSize;
@@ -127,6 +127,7 @@ void extract(char* archive, char* outputFile){
 				char i;
 				struct info ar[counter];
 				int outputSize = helpArch[findPos].fileSize;
+				char* delAr[outputSize];
 				fseek(statInfo, 0, SEEK_SET);
 				while (!feof(statInfo) && i != counter){
 					fscanf(statInfo, "%d %s", &ar[i].fileSize, ar[i].fileName);
@@ -140,9 +141,8 @@ void extract(char* archive, char* outputFile){
 						beforeFind = malloc(beforeSize);
 						fread(beforeFind, 1, beforeSize, arch);
 					}
-					for(int i = 0; i < outputSize; i++){
-						fgetc(arch);
-					}
+					fread(delAr, outputSize, 1, arch);
+					fwrite(delAr, outputSize, 1, file);
 					if(afterSize != 0){
 						afterFind = malloc(afterSize);
 						fread(afterFind, 1, afterSize, arch);
@@ -171,6 +171,8 @@ void extract(char* archive, char* outputFile){
 				printf("Нет такого файла\n");
 			fclose(file);
 		}
+		else
+                	printf("Нет такого файла\n");
 	}
 	else
 		printf("Архив пустой\n");
@@ -213,10 +215,10 @@ void archStat(){
 }
 
 void help(){
-	printf("./archiver arch_name -i(--input) file1 : добавить файл в архив\n");
-	printf("./archiver arch_name -e(--extract) file1 : удалить файл из архива\n");
-	printf("./archiver arch_name -s(--stat) : вывести текущее состояние архива\n");
-	printf("./archiver arch_name -h(--help) file1 : вывести справку по работе с архиватором\n");
+	printf("./archiver arch_name -i file1 : добавить файл в архив\n");
+	printf("./archiver arch_name -e file1 : удалить файл из архива\n");
+	printf("./archiver arch_name -s : вывести текущее состояние архива\n");
+	printf("./archiver arch_name -h file1 : вывести справку по работе с архиватором\n");
 }
 
 int main(int argc, char* argv[]){
