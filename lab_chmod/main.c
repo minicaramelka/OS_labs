@@ -47,28 +47,28 @@ int main(int argc, char* argv[]){
 				return 0;
 				break;
 			case 'u':
-				if(argv[1][1] == 'u' && argv[1][2] == 'a' && argv[1][3] == 'r' && argv[1][4] == 'w' && argv[1][5] == 'x' && !argv[1][6]){
+				if(argv[1][1] == 'u' && argv[1][2] == 'a' && (argv[1][3] == 'r' || argv[1][3] == 'w' || argv[1][3] == 'x') && (argv[1][4] == 'w' || argv[1][4] == 'r' || argv[1][4] == 'x') && (argv[1][5] == 'x' || argv[1][5] == 'r' || argv[1][5] == 'w') && argv[1][3] != argv[1][4] && argv[1][3] != argv[1][5] && argv[1][4] != argv[1][5] && !argv[1][6]){
 					chmod(filename, (S_IRUSR | S_IWUSR | S_IXUSR) | curMode);
                                 }
-                                else if(argv[1][1] == 'u' && argv[1][2] == 'r' && argv[1][3] == 'r' && argv[1][4] == 'w' && argv[1][5] == 'x' && !argv[1][6]){
+                                else if(argv[1][1] == 'u' && argv[1][2] == 'r' && (argv[1][3] == 'r' || argv[1][3] == 'w' || argv[1][3] == 'x') && (argv[1][4] == 'w' || argv[1][4] == 'r' || argv[1][4] == 'x') && (argv[1][5] == 'x' || argv[1][5] == 'r' || argv[1][5] == 'w') && argv[1][3] != argv[1][4] && argv[1][3] != argv[1][5] && argv[1][4] != argv[1][5] && !argv[1][6]){
                                         chmod(filename, (~(S_IRUSR | S_IWUSR | S_IXUSR)) & curMode);
                                 }
-                                else if(argv[1][1] == 'u' && argv[1][2] == 'a' && argv[1][3] == 'r' && argv[1][4] == 'w' && !argv[1][5]){
+                                else if(argv[1][1] == 'u' && argv[1][2] == 'a' && ((argv[1][3] == 'r' && argv[1][4] == 'w') || (argv[1][3] == 'w' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (S_IRUSR | S_IWUSR) | curMode);
                                 }
-                                else if(argv[1][1] == 'u' && argv[1][2] == 'r' && argv[1][3] == 'r' && argv[1][4] == 'w' && !argv[1][5]){
+                                else if(argv[1][1] == 'u' && argv[1][2] == 'r' && ((argv[1][3] == 'r' && argv[1][4] == 'w') || (argv[1][3] == 'w' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (~(S_IRUSR | S_IWUSR)) & curMode);
                                 }
-                                else if(argv[1][1] == 'u' && argv[1][2] == 'a' && argv[1][3] == 'r' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'u' && argv[1][2] == 'a' && ((argv[1][3] == 'r' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (S_IRUSR | S_IXUSR) | curMode);
                                 }
-                                else if(argv[1][1] == 'u' && argv[1][2] == 'r' && argv[1][3] == 'r' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'u' && argv[1][2] == 'r' && ((argv[1][3] == 'r' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (~(S_IRUSR | S_IXUSR)) & curMode);
                                 }
-                                else if(argv[1][1] == 'u' && argv[1][2] == 'a' && argv[1][3] == 'w' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'u' && argv[1][2] == 'a' && ((argv[1][3] == 'w' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'w')) && !argv[1][5]){
                                         chmod(filename, (S_IWUSR | S_IXUSR) | curMode);
                                 }
-                                else if(argv[1][1] == 'u' && argv[1][2] == 'r' && argv[1][3] == 'w' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'u' && argv[1][2] == 'r' && ((argv[1][3] == 'w' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'w')) && !argv[1][5]){
                                         chmod(filename, (~(S_IWUSR | S_IXUSR)) & curMode);
                                 }
                                 else if(argv[1][1] == 'u' && argv[1][2] == 'a' && argv[1][3] == 'w' && !argv[1][4])
@@ -88,28 +88,28 @@ int main(int argc, char* argv[]){
 
 				break;
 			case 'g':
-				if(argv[1][1] == 'g' && argv[1][2] == 'a' && argv[1][3] == 'r' && argv[1][4] == 'w' && argv[1][5] == 'x' && !argv[1][6]){
+				if(argv[1][1] == 'g' && argv[1][2] == 'a' && (argv[1][3] == 'r' || argv[1][3] == 'w' || argv[1][3] == 'x') && (argv[1][4] == 'w' || argv[1][4] == 'r' || argv[1][4] == 'x') && (argv[1][5] == 'x' || argv[1][5] == 'r' || argv[1][5] == 'w') && argv[1][3] != argv[1][4] && argv[1][3] != argv[1][5] && argv[1][4] != argv[1][5] && !argv[1][6]){
 					chmod(filename, (S_IRGRP | S_IWGRP | S_IXGRP) | curMode);
                                 }
-				else if(argv[1][1] == 'g' && argv[1][2] == 'r' && argv[1][3] == 'r' && argv[1][4] == 'w' && argv[1][5] == 'x' && !argv[1][6]){
+				else if(argv[1][1] == 'g' && argv[1][2] == 'r' && (argv[1][3] == 'r' || argv[1][3] == 'w' || argv[1][3] == 'x') && (argv[1][4] == 'w' || argv[1][4] == 'r' || argv[1][4] == 'x') && (argv[1][5] == 'x' || argv[1][5] == 'r' || argv[1][5] == 'w') && argv[1][3] != argv[1][4] && argv[1][3] != argv[1][5] && argv[1][4] != argv[1][5] && !argv[1][6]){
                                         chmod(filename, (~(S_IRGRP | S_IWGRP | S_IXGRP)) & curMode);
                                 }
-				else if(argv[1][1] == 'g' && argv[1][2] == 'a' && argv[1][3] == 'r' && argv[1][4] == 'w' && !argv[1][5]){
+				else if(argv[1][1] == 'g' && argv[1][2] == 'a' && ((argv[1][3] == 'r' && argv[1][4] == 'w') || (argv[1][3] == 'w' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (S_IRGRP | S_IWGRP) | curMode);
                                 }
-				else if(argv[1][1] == 'g' && argv[1][2] == 'r' && argv[1][3] == 'r' && argv[1][4] == 'w' && !argv[1][5]){
+				else if(argv[1][1] == 'g' && argv[1][2] == 'r' && ((argv[1][3] == 'r' && argv[1][4] == 'w') || (argv[1][3] == 'w' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (~(S_IRGRP | S_IWGRP)) & curMode);
                                 }
-                                else if(argv[1][1] == 'g' && argv[1][2] == 'a' && argv[1][3] == 'r' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'g' && argv[1][2] == 'a' && ((argv[1][3] == 'r' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (S_IRGRP | S_IXGRP) | curMode);
                                 }
-				else if(argv[1][1] == 'g' && argv[1][2] == 'r' && argv[1][3] == 'r' && argv[1][4] == 'x' && !argv[1][5]){
+				else if(argv[1][1] == 'g' && argv[1][2] == 'r' && ((argv[1][3] == 'r' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (~(S_IRGRP | S_IXGRP)) & curMode);
                                 }
-                                else if(argv[1][1] == 'g' && argv[1][2] == 'a' && argv[1][3] == 'w' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'g' && argv[1][2] == 'a' && ((argv[1][3] == 'w' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'w')) && !argv[1][5]){
                                         chmod(filename, (S_IWGRP | S_IXGRP) | curMode);
                                 }
-				else if(argv[1][1] == 'g' && argv[1][2] == 'r' && argv[1][3] == 'w' && argv[1][4] == 'x' && !argv[1][5]){
+				else if(argv[1][1] == 'g' && argv[1][2] == 'r' && ((argv[1][3] == 'w' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'w')) && !argv[1][5]){
                                         chmod(filename, (~(S_IWGRP | S_IXGRP)) & curMode);
                                 }
 				else if(argv[1][1] == 'g' && argv[1][2] == 'a' && argv[1][3] == 'w' && !argv[1][4])
@@ -128,28 +128,28 @@ int main(int argc, char* argv[]){
 					printf("Неправильный запрос\n");
 				break;
 			case 'o':
-				if(argv[1][1] == 'o' && argv[1][2] == 'a' && argv[1][3] == 'r' && argv[1][4] == 'w' && argv[1][5] == 'x' && !argv[1][6]){
+				if(argv[1][1] == 'o' && argv[1][2] == 'a' && (argv[1][3] == 'r' || argv[1][3] == 'w' || argv[1][3] == 'x') && (argv[1][4] == 'w' || argv[1][4] == 'r' || argv[1][4] == 'x') && (argv[1][5] == 'x' || argv[1][5] == 'r' || argv[1][5] == 'w') && argv[1][3] != argv[1][4] && argv[1][3] != argv[1][5] && argv[1][4] != argv[1][5] && !argv[1][6]){
                                         chmod(filename, (S_IROTH | S_IWOTH | S_IXOTH) | curMode);
                                 }
-                                else if(argv[1][1] == 'o' && argv[1][2] == 'r' && argv[1][3] == 'r' && argv[1][4] == 'w' && argv[1][5] == 'x' && !argv[1][6]){
+                                else if(argv[1][1] == 'o' && argv[1][2] == 'r' && (argv[1][3] == 'r' || argv[1][3] == 'w' || argv[1][3] == 'x') && (argv[1][4] == 'w' || argv[1][4] == 'r' || argv[1][4] == 'x') && (argv[1][5] == 'x' || argv[1][5] == 'r' || argv[1][5] == 'w') && argv[1][3] != argv[1][4] && argv[1][3] != argv[1][5] && argv[1][4] != argv[1][5] && !argv[1][6]){
                                         chmod(filename, (~(S_IROTH | S_IWOTH | S_IXOTH)) & curMode);
                                 }
-                                else if(argv[1][1] == 'o' && argv[1][2] == 'a' && argv[1][3] == 'r' && argv[1][4] == 'w' && !argv[1][5]){
+                                else if(argv[1][1] == 'o' && argv[1][2] == 'a' && ((argv[1][3] == 'r' && argv[1][4] == 'w') || (argv[1][3] == 'w' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (S_IROTH | S_IWOTH) | curMode);
                                 }
-                                else if(argv[1][1] == 'o' && argv[1][2] == 'r' && argv[1][3] == 'r' && argv[1][4] == 'w' && !argv[1][5]){
+                                else if(argv[1][1] == 'o' && argv[1][2] == 'r' && ((argv[1][3] == 'r' && argv[1][4] == 'w') || (argv[1][3] == 'w' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (~(S_IROTH | S_IWOTH)) & curMode);
                                 }
-                                else if(argv[1][1] == 'o' && argv[1][2] == 'a' && argv[1][3] == 'r' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'o' && argv[1][2] == 'a' && ((argv[1][3] == 'r' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (S_IROTH | S_IXOTH) | curMode);
                                 }
-                                else if(argv[1][1] == 'o' && argv[1][2] == 'r' && argv[1][3] == 'r' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'o' && argv[1][2] == 'r' && ((argv[1][3] == 'r' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'r')) && !argv[1][5]){
                                         chmod(filename, (~(S_IROTH | S_IXOTH)) & curMode);
                                 }
-                                else if(argv[1][1] == 'o' && argv[1][2] == 'a' && argv[1][3] == 'w' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'o' && argv[1][2] == 'a' && ((argv[1][3] == 'w' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'w')) && !argv[1][5]){
                                         chmod(filename, (S_IWOTH | S_IXOTH) | curMode);
                                 }
-                                else if(argv[1][1] == 'o' && argv[1][2] == 'r' && argv[1][3] == 'w' && argv[1][4] == 'x' && !argv[1][5]){
+                                else if(argv[1][1] == 'o' && argv[1][2] == 'r' && ((argv[1][3] == 'w' && argv[1][4] == 'x') || (argv[1][3] == 'x' && argv[1][4] == 'w')) && !argv[1][5]){
                                         chmod(filename, (~(S_IWOTH | S_IXOTH)) & curMode);
                                 }
                                 else if(argv[1][1] == 'o' && argv[1][2] == 'a' && argv[1][3] == 'w' && !argv[1][4])
