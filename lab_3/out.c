@@ -58,7 +58,7 @@ int main(){
         	if (sendTime != buft){
             		buft = sendTime;
 			*((data_struct*)addr) = sendStruct;
-        		printf("Placed val :\n Time:%s Pid:%d\n",ctime(&sendStruct.time), sendStruct.pid);
+        		printf("send time = %s | send pid = %d\n",ctime(&sendStruct.time), sendStruct.pid);
         	}
     	}
 	shmdt(addr);
