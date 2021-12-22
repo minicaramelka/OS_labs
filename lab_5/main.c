@@ -16,7 +16,7 @@ void *read_func(void *arg){
 	for(int i = 0; i < 10; i++){
                 pthread_mutex_lock(&mutex);
 		i++;
-                printf("Я %d-й поток, мой tid =  %lu, счетчик  = %d\n", i, pthread_self(), count);
+                printf("Я %d-й поток, мой tid =  %x, счетчик  = %d\n", i, pthread_self(), count);
                 pthread_mutex_unlock(&mutex);
 		i--;
                 sleep(2);
