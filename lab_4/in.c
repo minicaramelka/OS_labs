@@ -48,5 +48,6 @@ int main(){
         printf("\ntime_Consumer = %s | pid_Consumer = %d\n", ctime(&timer), getpid());
 	printf("sent time = %s | sent pid = %d\n", ctime(&getStruct.time), getStruct.pid);
 	semop(semid, &sem_open, 1);
+	shmdt(addr);
 	return 0;
 }
