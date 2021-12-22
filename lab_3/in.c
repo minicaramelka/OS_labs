@@ -39,5 +39,6 @@ int main(){
 	data_struct getStruct = *((data_struct*)addr);
         printf("\ntime_Consumer = %s | pid_Consumer = %d\n", ctime(&timer), getpid());
 	printf("sent time = %s | sent pid = %d\n", ctime(&getStruct.time), getStruct.pid);
+	shmdt(addr);
     	return 0;
 }
